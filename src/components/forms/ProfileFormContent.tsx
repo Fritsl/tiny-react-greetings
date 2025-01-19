@@ -23,12 +23,19 @@ export function ProfileFormContent({
   handlePageComplete,
   isCompleted
 }: ProfileFormContentProps) {
+  const updateFormData = (pageId: string, data: any) => {
+    setFormData({
+      ...formData,
+      [pageId]: data
+    });
+  };
+
   switch (currentPageId) {
     case 'profile-headline':
       return (
         <ProfileHeadlineForm
           value={formData['profile-headline']}
-          onChange={(value) => setFormData({ ...formData, 'profile-headline': value })}
+          onChange={(value) => updateFormData('profile-headline', value)}
           onComplete={() => handlePageComplete(currentPageId)}
           isCompleted={isCompleted}
         />
@@ -38,7 +45,7 @@ export function ProfileFormContent({
       return (
         <EnvironmentForm
           data={formData.environment}
-          onChange={(data) => setFormData({ ...formData, environment: data })}
+          onChange={(data) => updateFormData('environment', data)}
           onComplete={() => handlePageComplete(currentPageId)}
           isCompleted={isCompleted}
         />
@@ -48,7 +55,7 @@ export function ProfileFormContent({
       return (
         <LocationForm
           data={formData.location}
-          onChange={(data) => setFormData({ ...formData, location: data })}
+          onChange={(data) => updateFormData('location', data)}
           onComplete={() => handlePageComplete(currentPageId)}
           isCompleted={isCompleted}
         />
@@ -58,7 +65,7 @@ export function ProfileFormContent({
       return (
         <ConsiderationsForm
           data={formData.considerations}
-          onChange={(data) => setFormData({ ...formData, considerations: data })}
+          onChange={(data) => updateFormData('considerations', data)}
           onComplete={() => handlePageComplete(currentPageId)}
           isCompleted={isCompleted}
         />
@@ -68,7 +75,7 @@ export function ProfileFormContent({
       return (
         <PersonalInterestsForm
           data={formData['personal-interests']}
-          onChange={(data) => setFormData({ ...formData, 'personal-interests': data })}
+          onChange={(data) => updateFormData('personal-interests', data)}
           onComplete={() => handlePageComplete(currentPageId)}
           isCompleted={isCompleted}
         />
@@ -78,7 +85,7 @@ export function ProfileFormContent({
       return (
         <LifeGoalsForm
           data={formData['life-goals']}
-          onChange={(data) => setFormData({ ...formData, 'life-goals': data })}
+          onChange={(data) => updateFormData('life-goals', data)}
           onComplete={() => handlePageComplete(currentPageId)}
           isCompleted={isCompleted}
         />
@@ -88,7 +95,7 @@ export function ProfileFormContent({
       return (
         <ResumeForm
           data={formData.resume}
-          onChange={(data) => setFormData({ ...formData, resume: data })}
+          onChange={(data) => updateFormData('resume', data)}
           onComplete={() => handlePageComplete(currentPageId)}
           isCompleted={isCompleted}
         />

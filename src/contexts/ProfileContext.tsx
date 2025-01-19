@@ -23,14 +23,25 @@ export function ProfileProvider({ children }: ProfileProviderProps) {
   const [progress, setProgress] = useState(0);
   const [matchQuality, setMatchQuality] = useState(0);
 
+  // Simplified handleComplete without database calls
   const handleComplete = async (pageId: string, onComplete?: () => void) => {
-    setCompletedPages(prev => new Set([...prev, pageId]));
+    const newCompletedPages = new Set(completedPages);
+    newCompletedPages.add(pageId);
+    setCompletedPages(newCompletedPages);
+    
+    // Calculate new progress
+    setProgress((newCompletedPages.size / 7) * 100);
+    
+    // Update match quality (simplified calculation)
+    setMatchQuality(Math.min(100, newCompletedPages.size * 15));
+    
     onComplete?.();
   };
 
+  // Simplified refresh without database calls
   const refreshData = async () => {
     setIsLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 500)); // Simulate loading
     setIsLoading(false);
   };
 
