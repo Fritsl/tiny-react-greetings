@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Confetti from 'react-confetti';
-import { PartyPopper, Briefcase, Building2, Wrench, ArrowRight, Trophy } from 'lucide-react';
+import { Briefcase, Building2, Wrench, ArrowRight, Trophy } from 'lucide-react';
 
 export function ProfileComplete() {
   const navigate = useNavigate();

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Zap } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,7 +7,7 @@ interface MatchQualityIndicatorProps {
   remainingPages: number;
 }
 
-export function MatchQualityIndicator({ matchQuality, remainingPages }: MatchQualityIndicatorProps) {
+export function MatchQualityIndicator({ matchQuality }: MatchQualityIndicatorProps) {
   // If match quality is 100%, don't render anything
   if (matchQuality === 100) {
     return null;

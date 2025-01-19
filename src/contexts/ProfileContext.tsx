@@ -1,49 +1,41 @@
-import React, { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, ReactNode } from 'react';
 
 interface ProfileContextType {
-  progress: number;
-  matchQuality: number;
   completedPages: Set<string>;
+  isLoading: boolean;
   handleComplete: (pageId: string, onComplete?: () => void) => Promise<void>;
   refreshData: () => Promise<void>;
-  isLoading: boolean;
+}
+
+interface ProfileProviderProps {
+  children: ReactNode;
 }
 
 const ProfileContext = createContext<ProfileContextType | undefined>(undefined);
 
-export function ProfileProvider({ children }: { children: React.ReactNode }) {
-  const [progress, setProgress] = useState(0);
-  const [matchQuality, setMatchQuality] = useState(0);
+export function ProfileProvider({ children }: ProfileProviderProps) {
   const [completedPages, setCompletedPages] = useState<Set<string>>(new Set());
   const [isLoading, setIsLoading] = useState(false);
 
   const handleComplete = async (pageId: string, onComplete?: () => void) => {
-    setCompletedPages(prev => {
-      const newSet = new Set(prev);
-      newSet.add(pageId);
-      return newSet;
-    });
+    setCompletedPages(prev => new Set([...prev, pageId]));
     onComplete?.();
   };
 
   const refreshData = async () => {
-    // Mock refresh function
     setIsLoading(true);
+    // Simulate refresh delay
     await new Promise(resolve => setTimeout(resolve, 1000));
     setIsLoading(false);
   };
 
   return (
-    <ProfileContext.Provider
-      value={{
-        progress,
-        matchQuality,
-        completedPages,
-        handleComplete,
-        refreshData,
-        isLoading
-      }}
-    >
+    <ProfileContext.Provider value={{
+      completedPages,
+      isLoading,
+      handleComplete,
+      refreshData
+    }}>
       {children}
     </ProfileContext.Provider>
   );

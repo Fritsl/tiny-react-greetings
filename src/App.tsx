@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { TopMenu } from './components/layout/TopMenu';
 import { Footer } from './components/layout/Footer';
