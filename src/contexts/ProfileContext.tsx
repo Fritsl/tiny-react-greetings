@@ -7,8 +7,8 @@ interface ProfileContextType {
   matchQuality: number;
   setProgress: (progress: number) => void;
   setMatchQuality: (quality: number) => void;
-  handleComplete: (pageId: string, onComplete?: () => void) => Promise<void>;
-  refreshData: () => Promise<void>;
+  handleComplete: (pageId: string, onComplete?: () => void) => void;
+  refreshData: () => void;
 }
 
 const ProfileContext = createContext<ProfileContextType | undefined>(undefined);
@@ -23,26 +23,18 @@ export function ProfileProvider({ children }: ProfileProviderProps) {
   const [progress, setProgress] = useState(0);
   const [matchQuality, setMatchQuality] = useState(0);
 
-  // Simplified handleComplete without database calls
-  const handleComplete = async (pageId: string, onComplete?: () => void) => {
+  const handleComplete = (pageId: string, onComplete?: () => void) => {
     const newCompletedPages = new Set(completedPages);
     newCompletedPages.add(pageId);
     setCompletedPages(newCompletedPages);
-    
-    // Calculate new progress
     setProgress((newCompletedPages.size / 7) * 100);
-    
-    // Update match quality (simplified calculation)
     setMatchQuality(Math.min(100, newCompletedPages.size * 15));
-    
     onComplete?.();
   };
 
-  // Simplified refresh without database calls
-  const refreshData = async () => {
+  const refreshData = () => {
     setIsLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 500)); // Simulate loading
-    setIsLoading(false);
+    setTimeout(() => setIsLoading(false), 500);
   };
 
   return (

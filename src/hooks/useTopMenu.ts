@@ -1,11 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
 
 export function useTopMenu() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { signOut } = useAuth();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -21,19 +19,9 @@ export function useTopMenu() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Close mobile menu when route changes
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location]);
-
-  const handleSignOut = async () => {
-    try {
-      await signOut();
-      navigate('/signin');
-    } catch (error) {
-      console.error('Error signing out:', error);
-    }
-  };
 
   const handleNavigate = (path: string) => {
     navigate(path);
@@ -46,7 +34,6 @@ export function useTopMenu() {
     isDropdownOpen,
     isMobileMenuOpen,
     dropdownRef,
-    handleSignOut,
     handleNavigate,
     setIsDropdownOpen,
     setIsMobileMenuOpen

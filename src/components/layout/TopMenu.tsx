@@ -1,8 +1,7 @@
-import React from 'react';
+import { useTopMenu } from '../../hooks/useTopMenu';
 import { TopMenuBrand } from './TopMenu/TopMenuBrand';
 import { TopMenuDesktopNav } from './TopMenu/TopMenuDesktopNav';
 import { TopMenuMobileNav } from './TopMenu/TopMenuMobileNav';
-import { useTopMenu } from '../../hooks/useTopMenu';
 
 export function TopMenu() {
   const {
@@ -10,42 +9,31 @@ export function TopMenu() {
     isDropdownOpen,
     isMobileMenuOpen,
     dropdownRef,
-    handleSignOut,
     handleNavigate,
     setIsDropdownOpen,
     setIsMobileMenuOpen
   } = useTopMenu();
 
   return (
-    <div className="bg-card border-b border-border fixed top-0 left-0 right-0 z-[100]">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-between h-16">
-          <TopMenuBrand />
-
-          <TopMenuDesktopNav
-            location={location}
-            isDropdownOpen={isDropdownOpen}
-            dropdownRef={dropdownRef}
-            onSignOut={handleSignOut}
-            onNavigate={handleNavigate}
-            setIsDropdownOpen={setIsDropdownOpen}
-          />
-
-          <TopMenuMobileNav
-            isMobileMenuOpen={isMobileMenuOpen}
-            setIsMobileMenuOpen={setIsMobileMenuOpen}
-          />
-        </div>
-      </div>
-
-      {isMobileMenuOpen && (
-        <TopMenuMobileContent
+    <header className="fixed top-0 left-0 right-0 h-16 bg-card border-b border-border z-50">
+      <div className="h-full flex items-center justify-between px-4">
+        <TopMenuBrand />
+        
+        <TopMenuDesktopNav
           location={location}
-          onSignOut={handleSignOut}
+          isDropdownOpen={isDropdownOpen}
+          dropdownRef={dropdownRef}
+          onNavigate={handleNavigate}
+          setIsDropdownOpen={setIsDropdownOpen}
+        />
+
+        <TopMenuMobileNav
+          location={location}
+          isMobileMenuOpen={isMobileMenuOpen}
           onNavigate={handleNavigate}
           setIsMobileMenuOpen={setIsMobileMenuOpen}
         />
-      )}
-    </div>
+      </div>
+    </header>
   );
 }
