@@ -51,3 +51,10 @@ export interface FormData {
     resume: string;
   };
 }
+
+export interface EnvironmentPreference {
+  teamwork: number;
+  workStructure: number;
+  communication: number;
+  innovation: number;
+}
