@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { CompleteButton } from '../CompleteButton';
 import { ResumeTimeline } from '../resume/ResumeTimeline';
 import { TimelineChart } from '../resume/TimelineChart';
@@ -19,6 +19,13 @@ export function ResumeForm({ onComplete, isCompleted }: ResumeFormProps) {
 
   const handleEditEntry = (entry: ResumeEntry) => {
     setEditingEntry(entry);
+  };
+
+  const handleDeleteEntry = (entryId: string) => {
+    setResumeData(prev => ({
+      ...prev,
+      entries: prev.entries.filter(entry => entry.id !== entryId)
+    }));
   };
 
   const handleUpdateEntry = (updatedEntry: ResumeEntry) => {
@@ -64,19 +71,10 @@ export function ResumeForm({ onComplete, isCompleted }: ResumeFormProps) {
           <ResumeTimeline
             entries={resumeData.entries}
             onEdit={handleEditEntry}
+            onDelete={handleDeleteEntry}
           />
         </div>
       </section>
-
-      {/* Edit Modal */}
-      {editingEntry && (
-        <ResumeEntryForm
-          entry={editingEntry}
-          onChange={handleUpdateEntry}
-          onCancel={() => setEditingEntry(null)}
-          onSave={handleSaveEntry}
-        />
-      )}
 
       {/* Complete Button */}
       <div className="flex justify-end pt-4">

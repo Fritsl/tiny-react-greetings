@@ -1,10 +1,14 @@
 import { useState } from 'react';
-import { supabase } from '@/integrations/supabase/client';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { useToast } from '@/components/ui/use-toast';
+import { supabase } from '../../integrations/supabase/client';
+import { Button } from '../ui/button';
+import { Input } from '../ui/input';
+import { useToast } from '../ui/use-toast';
 
-export function AuthForm() {
+interface AuthFormProps {
+  mode?: 'signin' | 'signup';
+}
+
+export function AuthForm({ mode = 'signup' }: AuthFormProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -44,7 +48,7 @@ export function AuthForm() {
           type="email"
           placeholder="Email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
           required
         />
       </div>
@@ -53,12 +57,12 @@ export function AuthForm() {
           type="password"
           placeholder="Password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
           required
         />
       </div>
       <Button type="submit" disabled={loading}>
-        {loading ? 'Loading...' : 'Sign Up'}
+        {loading ? 'Loading...' : mode === 'signin' ? 'Sign In' : 'Sign Up'}
       </Button>
     </form>
   );
