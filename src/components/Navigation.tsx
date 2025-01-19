@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { FormPage } from '../types';
 import { CheckCircle, Circle } from 'lucide-react';
 import { MatchQualityIndicator } from './MatchQualityIndicator';

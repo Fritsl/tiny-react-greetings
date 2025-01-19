@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { TimelineEntry } from './TimelineEntry';
 import { ResumeEntry } from '../../types/resume';
 

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Clock, ListTodo } from 'lucide-react';
 import { ResumeEntry } from '../../types/resume';
 

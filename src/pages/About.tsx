@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Users, Target, Shield, Sparkles, Award, Heart } from 'lucide-react';
 
 const values = [

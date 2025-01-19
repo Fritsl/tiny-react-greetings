@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Sparkles, Target, Briefcase, Building2, Wrench, ArrowRight } from 'lucide-react';
 
 const steps = [

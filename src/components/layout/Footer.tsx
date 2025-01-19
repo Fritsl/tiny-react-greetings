@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 import { Wand2, Github, Twitter, Linkedin } from 'lucide-react';
 

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { FormPage, FormState, FormData } from '../../../types';
 import { ProfileFormProgress } from '../ProfileFormProgress';
 import { ProfileFormContent } from '../ProfileFormContent';

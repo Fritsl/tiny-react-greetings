@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Coins, Zap, Shield, Sparkles, CheckCircle2 } from 'lucide-react';
 import { ProgressBar } from '../components/ProgressBar';
 import { useProfile } from '../contexts/ProfileContext';

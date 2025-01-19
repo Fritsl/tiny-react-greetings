@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { TimelineGrid } from './TimelineGrid';
 import { TimelineGapsAndEntries } from './TimelineGapsAndEntries';
 import { Gap, ResumeEntry } from '../../types/resume';

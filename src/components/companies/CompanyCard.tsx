@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Company } from '../../types/companies';
 import { CompanyCardHeader } from './CompanyCardHeader';
 import { CompanyCardDescription } from './CompanyCardDescription';

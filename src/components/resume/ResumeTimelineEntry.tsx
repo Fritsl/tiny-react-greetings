@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { ResumeEntry } from '../../types/resume';
 import { ResumeTimelineEntryIcon } from './ResumeTimelineEntryIcon';
 import { ResumeTimelineEntryDetails } from './ResumeTimelineEntryDetails';

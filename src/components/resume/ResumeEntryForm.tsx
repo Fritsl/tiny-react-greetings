@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { ResumeEntry } from '../../types/resume';
 import { ResumeEntryFormHeader } from './ResumeEntryFormHeader';
 import { ResumeEntryFormFields } from './ResumeEntryFormFields';

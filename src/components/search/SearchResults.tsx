@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { SearchHeader } from './SearchHeader';
 
 interface SearchResultsProps<T> {

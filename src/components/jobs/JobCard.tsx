@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { JobMatch } from '../../types/jobs';
 import { JobCardHeader } from './JobCardHeader';
 import { JobCardDescription } from './JobCardDescription';

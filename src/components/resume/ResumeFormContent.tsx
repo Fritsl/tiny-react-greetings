@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { NewResumeEntryButton } from './NewResumeEntryButton';
 import { PDFUploadForm } from './PDFUploadForm';
 import { ResumeTimeline } from './ResumeTimeline';

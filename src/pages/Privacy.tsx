@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Shield, Lock, Eye, Database, Cookie, Mail } from 'lucide-react';
 
 const sections = [

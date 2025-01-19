@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { MapPin, Building, DollarSign, Clock } from 'lucide-react';
 
 interface JobCardHeaderProps {

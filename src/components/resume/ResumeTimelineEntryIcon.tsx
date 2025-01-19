@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Briefcase, GraduationCap, Award } from 'lucide-react';
 import { ResumeEntry } from '../../types/resume';
 

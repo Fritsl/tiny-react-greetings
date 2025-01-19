@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Location } from 'react-router-dom';
 import { TopMenuNavLink } from './TopMenuNavLink';
 import { TopMenuAccountDropdown } from './TopMenuAccountDropdown';

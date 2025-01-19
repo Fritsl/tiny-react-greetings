@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { JobCard } from './JobCard';
 import { JobMatch } from '../../types/jobs';
 import { SearchResults } from '../search/SearchResults';

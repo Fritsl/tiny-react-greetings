@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { UserCircle, ChevronDown, Users, Coins, LogOut } from 'lucide-react';
 
 interface TopMenuAccountDropdownProps {

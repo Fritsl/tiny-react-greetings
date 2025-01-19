@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { ResumeEntry } from '../../types/resume';
 import { EntryTypeAndTitle } from './EntryTypeAndTitle';
 import { EntryOrganizationAndLocation } from './EntryOrganizationAndLocation';

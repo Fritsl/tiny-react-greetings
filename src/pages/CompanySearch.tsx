@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { CompanySearchResults } from '../components/companies/CompanySearchResults';
 import { mockCompanies } from '../types/companies';
 import { ProgressBar } from '../components/ProgressBar';

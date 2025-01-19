@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Building, MapPin, Users } from 'lucide-react';
 
 interface CompanyCardHeaderProps {

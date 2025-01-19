@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Globe, Building, ExternalLink } from 'lucide-react';
 
 interface CompanyCardLinksProps {

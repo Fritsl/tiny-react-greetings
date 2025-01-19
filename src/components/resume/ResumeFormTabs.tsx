@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { PenTool, FileText } from 'lucide-react';
 
 interface ResumeFormTabsProps {

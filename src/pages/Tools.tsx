@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { FileText, Linkedin } from 'lucide-react';
 import { LinkedInPostGenerator } from '../components/tools/LinkedInPostGenerator';
 import { CoverLetterGenerator } from '../components/tools/CoverLetterGenerator';
