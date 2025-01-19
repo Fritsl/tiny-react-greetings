@@ -3,19 +3,25 @@ import { createContext, useContext, useState, ReactNode } from 'react';
 interface ProfileContextType {
   completedPages: Set<string>;
   isLoading: boolean;
+  progress: number;
+  matchQuality: number;
+  setProgress: (progress: number) => void;
+  setMatchQuality: (quality: number) => void;
   handleComplete: (pageId: string, onComplete?: () => void) => Promise<void>;
   refreshData: () => Promise<void>;
 }
+
+const ProfileContext = createContext<ProfileContextType | undefined>(undefined);
 
 interface ProfileProviderProps {
   children: ReactNode;
 }
 
-const ProfileContext = createContext<ProfileContextType | undefined>(undefined);
-
 export function ProfileProvider({ children }: ProfileProviderProps) {
   const [completedPages, setCompletedPages] = useState<Set<string>>(new Set());
   const [isLoading, setIsLoading] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [matchQuality, setMatchQuality] = useState(0);
 
   const handleComplete = async (pageId: string, onComplete?: () => void) => {
     setCompletedPages(prev => new Set([...prev, pageId]));
@@ -24,7 +30,6 @@ export function ProfileProvider({ children }: ProfileProviderProps) {
 
   const refreshData = async () => {
     setIsLoading(true);
-    // Simulate refresh delay
     await new Promise(resolve => setTimeout(resolve, 1000));
     setIsLoading(false);
   };
@@ -33,6 +38,10 @@ export function ProfileProvider({ children }: ProfileProviderProps) {
     <ProfileContext.Provider value={{
       completedPages,
       isLoading,
+      progress,
+      matchQuality,
+      setProgress,
+      setMatchQuality,
       handleComplete,
       refreshData
     }}>

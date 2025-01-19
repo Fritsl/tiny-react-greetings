@@ -1,33 +1,29 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, ReactNode } from 'react';
 
-interface AuthContextType {
-  isAuthenticated: boolean;
-  login: () => Promise<void>;
-  logout: () => Promise<void>;
+interface User {
+  id: string;
+  email: string;
 }
+
+export interface AuthContextType {
+  user: User | null;
+  loading: boolean;
+  signOut: () => Promise<void>;
+}
+
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 interface AuthProviderProps {
   children: ReactNode;
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
-
 export function AuthProvider({ children }: AuthProviderProps) {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
-
-  const login = async () => {
-    setIsAuthenticated(true);
-  };
-
-  const logout = async () => {
-    setIsAuthenticated(false);
-  };
-
+  // Implementation details here
   return (
     <AuthContext.Provider value={{
-      isAuthenticated,
-      login,
-      logout
+      user: null,
+      loading: false,
+      signOut: async () => {},
     }}>
       {children}
     </AuthContext.Provider>
