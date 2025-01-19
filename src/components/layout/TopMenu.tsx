@@ -11,7 +11,8 @@ export function TopMenu() {
     dropdownRef,
     handleNavigate,
     setIsDropdownOpen,
-    setIsMobileMenuOpen
+    setIsMobileMenuOpen,
+    handleSignOut
   } = useTopMenu();
 
   return (
@@ -25,13 +26,14 @@ export function TopMenu() {
           dropdownRef={dropdownRef}
           onNavigate={handleNavigate}
           setIsDropdownOpen={setIsDropdownOpen}
+          onSignOut={handleSignOut}
         />
 
         <TopMenuMobileNav
-          location={location}
           isMobileMenuOpen={isMobileMenuOpen}
           onNavigate={handleNavigate}
           setIsMobileMenuOpen={setIsMobileMenuOpen}
+          onSignOut={handleSignOut}
         />
       </div>
     </header>

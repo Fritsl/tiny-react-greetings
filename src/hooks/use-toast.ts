@@ -2,9 +2,12 @@ import { useState } from 'react';
 
 export interface Toast {
   id: string;
-  title?: string;
+  title: string;
   description?: string;
-  action?: React.ReactNode;
+  action?: {
+    label: string;
+    onClick: () => void;
+  };
 }
 
 export function useToast() {
@@ -15,13 +18,13 @@ export function useToast() {
     setToasts((current) => [...current, { ...toast, id }]);
   };
 
-  const dismissToast = (id: string) => {
-    setToasts((current) => current.filter((toast) => toast.id !== id));
+  const removeToast = (id: string) => {
+    setToasts((current) => current.filter((t) => t.id !== id));
   };
 
   return {
     toasts,
     addToast,
-    dismissToast,
+    removeToast,
   };
 }

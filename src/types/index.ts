@@ -1,19 +1,3 @@
-export interface FormPage {
-  id: string;
-  title: string;
-  description: string;
-  isCompleted: boolean;
-  category: 'profile' | 'experience' | 'skills' | 'preferences';
-  matchImpact: number;
-}
-
-export interface FormState {
-  currentPageId: string;
-  pages: FormPage[];
-  overallProgress: number;
-  predictedMatchQuality: number;
-}
-
 export interface FormData {
   'profile-headline': string;
   environment: {
@@ -52,9 +36,11 @@ export interface FormData {
   };
 }
 
-export interface EnvironmentPreference {
-  teamwork: number;
-  workStructure: number;
-  communication: number;
-  innovation: number;
+export interface FormPage {
+  id: string;
+  title: string;
+  description: string;
+  isCompleted: boolean;
+  category: string;
+  matchImpact: number;
 }
