@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useProfile } from '../../../contexts/ProfileContext';
 import { useProfileFormState } from '../../../hooks/useProfileFormState';
@@ -7,6 +7,7 @@ import { ProfileFormLayout } from '../ProfileFormLayout';
 import { ProfileFormLoading } from '../ProfileFormLoading';
 import { ProfileFormContent } from '../ProfileFormContent';
 import { ProfileFormProgress } from '../ProfileFormProgress';
+import { ProfileFormMainContent } from './ProfileFormMainContent';
 
 export function ProfileFormContainer() {
   const navigate = useNavigate();
