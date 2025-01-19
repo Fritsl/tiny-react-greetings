@@ -11,9 +11,11 @@ export function TopMenu() {
     dropdownRef,
     handleNavigate,
     setIsDropdownOpen,
-    setIsMobileMenuOpen,
-    handleSignOut
+    setIsMobileMenuOpen
   } = useTopMenu();
+
+  // Since we're removing authentication, we'll use a no-op function
+  const handleSignOut = () => {};
 
   return (
     <header className="fixed top-0 left-0 right-0 h-16 bg-card border-b border-border z-50">
@@ -31,7 +33,6 @@ export function TopMenu() {
 
         <TopMenuMobileNav
           isMobileMenuOpen={isMobileMenuOpen}
-          onNavigate={handleNavigate}
           setIsMobileMenuOpen={setIsMobileMenuOpen}
           onSignOut={handleSignOut}
         />

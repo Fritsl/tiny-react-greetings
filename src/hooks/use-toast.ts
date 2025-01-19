@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React from 'react';
 
 export interface Toast {
   id: string;
@@ -11,10 +11,10 @@ export interface Toast {
 }
 
 export function useToast() {
-  const [toasts, setToasts] = useState<Toast[]>([]);
+  const [toasts, setToasts] = React.useState<Toast[]>([]);
 
-  const addToast = (toast: Omit<Toast, 'id'>) => {
-    const id = Math.random().toString(36).substr(2, 9);
+  const addToast = (toast: Omit<Toast, "id">) => {
+    const id = Math.random().toString(36).slice(2);
     setToasts((current) => [...current, { ...toast, id }]);
   };
 
