@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CompleteButton } from '../CompleteButton';
 import { useProfile } from '../../contexts/ProfileContext';
 
@@ -11,9 +11,11 @@ interface ProfileHeadlineFormProps {
 
 export function ProfileHeadlineForm({ value, onChange, onComplete, isCompleted }: ProfileHeadlineFormProps) {
   const { handleComplete } = useProfile();
-  const [isSaving, setIsSaving] = useState(false);
+  const [isSaving, setIsSaving] = React.useState(false);
 
   const handleSave = async () => {
+    if (!value.trim()) return;
+    
     setIsSaving(true);
     try {
       await handleComplete('profile-headline', onComplete);
