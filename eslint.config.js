@@ -15,6 +15,9 @@ export default tseslint.config(
         ...globals.browser,
         React: 'readonly'
       },
+      parserOptions: {
+        jsx: true
+      }
     },
     plugins: {
       'react-hooks': reactHooks,
