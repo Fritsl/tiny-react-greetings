@@ -5,7 +5,7 @@ import { Input } from '../ui/input';
 import { useToast } from '../ui/use-toast';
 
 interface AuthFormProps {
-  mode?: 'signin' | 'signup';
+  mode: 'signin' | 'signup';
 }
 
 export function AuthForm({ mode = 'signup' }: AuthFormProps) {
@@ -14,21 +14,22 @@ export function AuthForm({ mode = 'signup' }: AuthFormProps) {
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     
     try {
-      const { error } = await supabase.auth.signUp({
-        email,
-        password,
-      });
+      const { error } = mode === 'signin' 
+        ? await supabase.auth.signInWithPassword({ email, password })
+        : await supabase.auth.signUp({ email, password });
 
       if (error) throw error;
 
       toast({
-        title: "Success!",
-        description: "Check your email for the confirmation link.",
+        title: mode === 'signin' ? "Signed in successfully!" : "Success!",
+        description: mode === 'signin' 
+          ? "Welcome back!"
+          : "Check your email for the confirmation link.",
       });
     } catch (error) {
       toast({
@@ -48,7 +49,7 @@ export function AuthForm({ mode = 'signup' }: AuthFormProps) {
           type="email"
           placeholder="Email"
           value={email}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
       </div>
@@ -57,11 +58,11 @@ export function AuthForm({ mode = 'signup' }: AuthFormProps) {
           type="password"
           placeholder="Password"
           value={password}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
           required
         />
       </div>
-      <Button type="submit" disabled={loading}>
+      <Button type="submit" disabled={loading} className="w-full">
         {loading ? 'Loading...' : mode === 'signin' ? 'Sign In' : 'Sign Up'}
       </Button>
     </form>
